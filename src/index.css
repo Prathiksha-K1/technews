@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-display: 'Syne', 'Space Grotesk', sans-serif;
+    --font-impact: 'Bebas Neue', 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #080808;
+    color: #f4f4f5;
+    overflow-x: hidden;
+    selection-background-color: #dc2626;
+    selection-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Editorial Typography Styles */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-impact {
+  font-family: var(--font-impact);
+  letter-spacing: 0.04em;
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+}
+
+/* Red & Black Editorial Surfaces */
+.editorial-card {
+  background: #111113;
+  border: 1px solid #27272a;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-card:hover {
+  border-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(220, 38, 38, 0.18);
+}
+
+.editorial-card-active {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px #dc2626, 0 12px 35px -8px rgba(220, 38, 38, 0.25);
+}
+
+/* Inshorts Full Deck Container */
+.inshorts-deck {
+  height: calc(100vh - 4.5rem);
+  max-height: 820px;
+}
+
+/* Big Headline Typography */
+.headline-huge {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+/* Inshorts Card Surface */
+.inshorts-surface {
+  background: radial-gradient(circle at 85% 15%, #1c1012 0%, #121214 45%, #0a0a0c 100%);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+/* Stark Brutalist Borders */
+.border-crimson {
+  border-color: #dc2626;
+}
+
+.bg-crimson {
+  background-color: #dc2626;
+}
+
+.text-crimson {
+  color: #ef4444;
+}
+
+/* Smooth reading bar */
+.reading-bar {
+  transform-origin: left;
+  transition: width 0.1s linear;
+}

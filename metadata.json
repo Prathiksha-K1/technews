@@ -1,0 +1,6 @@
+{
+  "name": "TECHPULSE - Live Technology News & Intelligence Portal",
+  "description": "Live technology news and AI-powered intelligence portal with real-time feeds, deep article insights, trend discovery, and personalized reading.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
