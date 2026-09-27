@@ -1,181 +1,602 @@
 # TECHPULSE - Live Technology News & Intelligence Portal
 
-> **Academic Project Brief**: An individual academic ReactJS web application engineering a technology news and intelligence command center. Features real-time RSS ingestion, deterministic dataset fallbacks, AI-powered article intelligence with Gemini 3.8 Flash, trend frequency discovery, and offline bookmark persistence.
+> TECHPULSE is a modern full-stack technology news and intelligence portal built with React, TypeScript, Express, Tailwind CSS, and Gemini AI. It provides technology news discovery, trend analysis, bookmarking, search, article exploration, and an AI-powered intelligence dashboard.
+
+LIVE DEMO: https://technews-lilac.vercel.app/
+
 
 ---
 
-## 1. Project Objective
+## Features
 
-To build an original, production-quality technology intelligence portal that satisfies the academic requirements of a ReactJS news interface while extending the concept into a modern command center. The application avoids generic dashboard templates, emphasizing information hierarchy, accessible dark-first aesthetics, verified metrics, and secure server-side AI integration.
-
----
-
-## 2. Academic Problem Statement
-
-> **"Tech News Interface – Display technology news from a local dataset with categories, search, and article details."**
-
-This project fulfills and extends the problem statement through:
-1. **Interactive Multi-View Architecture**: 7 distinct functional views (Command Center, Live Feed, Explore, Article Details, Intelligence Dashboard, Trending Topics, Saved Articles).
-2. **Local Dataset Support**: Comprehensive normalized dataset of verified dispatches across 12 primary technology domains.
-3. **Multi-Facet Search & Filtering**: Debounced query processing, category matrix, and topic tag filtering.
-4. **Form Handling & Validation**: Custom news submission modal with 8 client-side validation rules and immediate state ingestion.
-5. **AI-Powered Intelligence**: Server-side Gemini 3.8 Flash integration for executive summaries, named entity extraction, and "why it matters" systemic impact reasoning.
-
----
-
-## 3. Core Features
-
-- **Technology Intelligence Command Center (Home)**:
-  - Real-time status banner indicating live ingestion or honest fallback state.
-  - Anchor story showcase with AI systemic impact brief.
-  - Dynamic dataset metrics (stories tracked, active categories, verified sources, total reading time).
-  - Trending radar highlighting recurring dataset topics.
-  - Category chip navigation and latest stories grid.
-- **Dedicated Live Feed (`/feed`)**:
-  - Continuous wire with refresh controls, sorting (newest, reading time, publisher), and layout toggling (cards vs compact).
-  - Real public RSS integration (Hacker News, Ars Technica, The Verge) with graceful local fallback.
-- **Explore & Discovery (`/explore`)**:
-  - Debounced search input synchronized with URL parameters.
-  - Multi-topic taxonomy filter.
-  - Session history carousel tracking recently examined stories.
-- **Article Details View (`/article/:id`)**:
-  - Full metadata: author byline, publisher attribution, reading time, published timestamp.
-  - Contextual abstract and excerpt.
-  - Original publication link respecting source copyright.
-  - Reading progress bar at top of viewport.
-  - Related stories in the same domain.
-- **AI Intelligence Hub (`/intelligence`)**:
-  - Cross-corpus macro trend synthesis powered by Gemini 3.8 Flash.
-  - Interactive story picker for deep analytical extraction.
-  - Emerging themes matrix.
-  - Transparent labeling of AI-generated analysis.
-- **Trending Topics Radar (`/trending`)**:
-  - Deterministic topic frequency calculations from active dataset (no fabricated numbers).
-  - Momentum and velocity meters.
-  - Filterable trend dossiers.
-- **Offline Reading List (`/saved`)**:
-  - Client-side persistence using `localStorage`.
-  - Search and filter within saved articles.
-  - Export capabilities (Markdown & JSON reading list formats).
-- **Academic Architecture Dossier (`/methodology`)**:
-  - Problem statement rubric checklist, normalized schemas, and architectural explanation for evaluators.
+* Live Technology News Feed
+* Trending Technology Topics
+* AI-Powered Intelligence Dashboard
+* Smart Search and Discovery
+* Technology Trend Analysis
+* Bookmark and Save Articles
+* Recently Viewed Articles
+* Submit Your Own Story
+* Offline Bookmark Persistence
+* Export Reading Lists
+* Responsive Modern UI/UX
+* Gemini API Integration
+* Express API Proxy
+* Vite-powered Development
+* Tailwind CSS Design System
 
 ---
 
-## 4. Technology Stack
+## Core Idea
 
-- **Frontend**:
-  - React 19 (Functional Components, Hooks)
-  - TypeScript 5.8+ (Strict Type Checking)
-  - React Router v7 (`react-router-dom`)
-  - Tailwind CSS v4 (Glassmorphic surfaces, dark-first intelligence aesthetic)
-  - Lucide React (Icons)
-- **Backend & Middleware**:
-  - Node.js & Express
-  - `@google/genai` (Gemini 3.8 Flash model via secure server proxy)
-  - `fast-xml-parser` (Public RSS feed XML ingestion)
-  - `dotenv` (Environment variable management)
-- **Persistence**:
-  - Browser `localStorage` for bookmarks, session history, and student submissions.
+TECHPULSE is designed as a technology intelligence command center rather than a simple news website.
 
----
+The platform organizes technology stories into multiple categories, analyzes article trends, and provides users with a centralized interface for discovering and understanding technology developments.
 
-## 5. Security & API Architecture
+### Technology Categories
 
-- **Zero Client Secret Exposure**:
-  - The `GEMINI_API_KEY` is strictly managed on the Express server (`server.ts`).
-  - Frontend components communicate via `/api/intelligence/analyze` and `/api/intelligence/synthesize-trends`.
-  - No secret keys are included in client bundles.
-- **Graceful Degradation**:
-  - When offline or when the Gemini API key is not configured, the system transparently utilizes a deterministic heuristic analytical engine with clear UI notification.
-- **Respect for Publisher Content**:
-  - Excerpts and abstracts are provided with direct outbound links to original publisher articles.
+* Artificial Intelligence
+* Software
+* Cybersecurity
+* Cloud Computing
+* Consumer Technology
+* Biotechnology
+* Robotics
+* Space Technology
+* FinTech
+* Web Technology
+* Enterprise Technology
+* Emerging Technology
 
 ---
 
-## 6. Project Structure
+# Project Architecture
 
-```
-├── .env.example              # Environment variables template
-├── .gitignore                # Git exclusions
-├── index.html                # HTML entry point with metadata & web fonts
-├── metadata.json             # AI Studio metadata
-├── package.json              # Dependencies and execution scripts
-├── server.ts                 # Express full-stack server & Gemini API proxy
+```text
+TECHPULSE
+│
+├── metadata.json
+│   └── AI Studio metadata
+│
+├── package.json
+│   └── Dependencies and execution scripts
+│
+├── server.ts
+│   └── Express full-stack server and Gemini API proxy
+│
 ├── src/
-│   ├── App.tsx               # Primary router shell
-│   ├── main.tsx              # React DOM mounting
-│   ├── index.css             # Tailwind CSS & design tokens
+│   │
+│   ├── App.tsx
+│   │   └── Primary router shell
+│   │
+│   ├── main.tsx
+│   │   └── React DOM mounting
+│   │
+│   ├── index.css
+│   │   └── Tailwind CSS and design tokens
+│   │
 │   ├── types/
-│   │   └── article.ts        # Normalized TypeScript models
+│   │   └── article.ts
+│   │       └── Normalized TypeScript article models
+│   │
 │   ├── data/
-│   │   ├── categories.ts     # 12 Primary technology categories & colors
-│   │   └── initialArticles.ts# Curated baseline dataset
+│   │   ├── categories.ts
+│   │   │   └── Technology categories and colors
+│   │   │
+│   │   └── initialArticles.ts
+│   │       └── Curated baseline dataset
+│   │
 │   ├── services/
-│   │   ├── apiService.ts     # Client API communication
-│   │   └── storageService.ts # LocalStorage bookmarks & history
+│   │   ├── apiService.ts
+│   │   │   └── Client API communication
+│   │   │
+│   │   └── storageService.ts
+│   │       └── LocalStorage bookmarks and history
+│   │
 │   ├── hooks/
-│   │   ├── useArticles.ts    # Feed state, metrics & trend calculation
-│   │   ├── useBookmarks.ts   # Bookmark state management
-│   │   ├── useDebounce.ts    # Search debouncing
-│   │   └── useRecentlyViewed.ts # Session history tracking
+│   │   ├── useArticles.ts
+│   │   │   └── Feed state, metrics and trend calculation
+│   │   │
+│   │   ├── useBookmarks.ts
+│   │   │   └── Bookmark state management
+│   │   │
+│   │   ├── useDebounce.ts
+│   │   │   └── Search debouncing
+│   │   │
+│   │   └── useRecentlyViewed.ts
+│   │       └── Session history tracking
+│   │
 │   ├── components/
-│   │   ├── common/           # Navbar, Footer, Badges, Search, Skeletons, Banner
-│   │   ├── cards/            # HeroStory, ArticleCard, NewsGrid, CompactStoryRow
-│   │   ├── details/          # IntelligencePanel, ReadingProgress
-│   │   ├── trending/         # TrendingTopics radar
-│   │   └── submit/           # SubmitArticleModal with form validation
+│   │   │
+│   │   ├── common/
+│   │   │   └── Navbar, Footer, Badges, Search,
+│   │   │       Skeletons and Banner
+│   │   │
+│   │   ├── cards/
+│   │   │   └── HeroStory, ArticleCard, NewsGrid,
+│   │   │       CompactStoryRow
+│   │   │
+│   │   ├── details/
+│   │   │   └── IntelligencePanel and ReadingProgress
+│   │   │
+│   │   ├── trending/
+│   │   │   └── TrendingTopics radar
+│   │   │
+│   │   └── submit/
+│   │       └── SubmitArticleModal with validation
+│   │
 │   └── pages/
-│       ├── Home.tsx          # Command Center
-│       ├── LiveFeed.tsx      # Live news feed
-│       ├── Explore.tsx       # Discovery and search
-│       ├── ArticleDetails.tsx# Article deep dive
-│       ├── Intelligence.tsx  # AI Intelligence Dashboard
-│       ├── Trending.tsx      # Trend frequency radar
-│       ├── SavedArticles.tsx # Offline bookmarks
-│       └── Methodology.tsx   # Academic specification & rubric guide
-└── tsconfig.json             # TypeScript configuration
+│       ├── Home.tsx
+│       │   └── Command Center
+│       │
+│       ├── LiveFeed.tsx
+│       │   └── Live technology news feed
+│       │
+│       ├── Explore.tsx
+│       │   └── Discovery and search
+│       │
+│       ├── ArticleDetails.tsx
+│       │   └── Article deep dive
+│       │
+│       ├── Intelligence.tsx
+│       │   └── AI Intelligence Dashboard
+│       │
+│       ├── Trending.tsx
+│       │   └── Technology trend radar
+│       │
+│       ├── SavedArticles.tsx
+│       │   └── Offline bookmarks
+│       │
+│       └── Methodology.tsx
+│           └── Academic specification and evaluation guide
+│
+└── tsconfig.json
+    └── TypeScript configuration
 ```
 
 ---
 
-## 7. Setup & Execution
+# Technology Stack
 
-### Prerequisites
-- Node.js 20+
-- npm or yarn
+| Technology   | Purpose                          |
+| ------------ | -------------------------------- |
+| React        | Frontend application             |
+| TypeScript   | Type-safe development            |
+| Vite         | Development and production build |
+| Tailwind CSS | UI styling                       |
+| Express.js   | Full-stack server                |
+| Gemini API   | AI-powered intelligence          |
+| LocalStorage | Offline bookmarks and history    |
+| Node.js      | Runtime environment              |
 
-### Installation
+---
+
+# Main Application Pages
+
+## Home - Command Center
+
+The main dashboard provides an overview of technology stories, trending topics, and important intelligence.
+
+## Live Feed
+
+Displays the latest technology stories in a structured news-feed interface.
+
+## Explore
+
+Allows users to discover and search technology stories using keywords and categories.
+
+## Article Details
+
+Provides a detailed view of an individual technology article, including intelligence information and reading progress.
+
+## Intelligence
+
+Provides AI-oriented analysis and technology intelligence derived from the available article dataset.
+
+## Trending
+
+Visualizes frequently occurring technology topics and emerging trends.
+
+## Saved Articles
+
+Stores bookmarked articles locally so users can access their saved reading list after refreshing the browser.
+
+## Methodology
+
+Documents the application's architecture, methodology, technical implementation, and academic evaluation points.
+
+---
+
+# Application Workflow
+
+```text
+                 Technology News
+                       |
+                       v
+              Article Normalization
+                       |
+                       v
+                React News Feed
+                       |
+          +------------+------------+
+          |            |            |
+          v            v            v
+      Trending     Bookmarks    Intelligence
+      Analysis      Storage       Dashboard
+          |            |            |
+          +------------+------------+
+                       |
+                       v
+                User Insights
+                 and Reading
+```
+
+---
+
+# AI and Intelligence Architecture
+
+TECHPULSE uses an AI-assisted architecture to provide technology intelligence.
+
+The Gemini integration is handled through the Express server instead of directly exposing the API key in the frontend.
+
+```text
+React Frontend
+      |
+      v
+Express Server
+      |
+      v
+Gemini API
+      |
+      v
+AI Processing
+      |
+      v
+Intelligence Results
+      |
+      v
+React Interface
+```
+
+This architecture helps keep the Gemini API credential on the server side.
+
+---
+
+# Trend Analysis
+
+The application calculates technology trends using article topic and category frequency.
+
+Example:
+
+```text
+Articles
+   |
+   +-- AI
+   +-- AI
+   +-- Cybersecurity
+   +-- Robotics
+   +-- AI
+   +-- Robotics
+          |
+          v
+   Frequency Analysis
+          |
+          +-- AI = 3
+          +-- Robotics = 2
+          +-- Cybersecurity = 1
+          |
+          v
+   Trending Topics
+```
+
+The resulting information powers the Trending Topics Radar and intelligence-related components.
+
+---
+
+# Offline Capability
+
+TECHPULSE uses browser LocalStorage to persist user-specific information.
+
+### Stored Data
+
+* Bookmarked articles
+* Recently viewed articles
+* Reading lists
+
+### Workflow
+
+```text
+User Action
+     |
+     v
+React State
+     |
+     v
+Storage Service
+     |
+     v
+LocalStorage
+     |
+     v
+Persistent Browser Data
+```
+
+Users can bookmark an article, navigate to Saved Articles, refresh the browser, and continue accessing their saved reading list.
+
+---
+
+# Academic Evaluation Points
+
+## 1. Component Modularity
+
+The application follows a modular component architecture.
+
+For example:
+
+```text
+ArticleCard
+├── Standard Variant
+├── Horizontal Variant
+├── Image Fallback
+├── Metadata
+└── Category Badge
+```
+
+`ArticleCard.tsx` accepts different variants so that the same component can be reused across multiple pages.
+
+---
+
+## 2. State Management
+
+Custom React hooks are used to separate application logic from UI components.
+
+```text
+useArticles()
+useBookmarks()
+useDebounce()
+useRecentlyViewed()
+```
+
+`useArticles.ts` handles feed state, metrics, and trend calculations without unnecessarily modifying the underlying dataset.
+
+---
+
+## 3. Form Validation
+
+The Submit Story feature includes:
+
+* Required field validation
+* Empty-field detection
+* URL validation
+* Real-time error states
+* Instant insertion into application state
+
+### Workflow
+
+```text
+User opens Submit Story
+        |
+        v
+Enters article information
+        |
+        v
+Validation
+        |
+   +----+----+
+   |         |
+ Invalid    Valid
+   |         |
+   v         v
+Errors    Add Story
+             |
+             v
+        Update Feed
+```
+
+---
+
+## 4. Offline Persistence
+
+Bookmarking and recently viewed functionality uses browser storage.
+
+```text
+User Action
+     |
+     v
+React State
+     |
+     v
+Storage Service
+     |
+     v
+LocalStorage
+```
+
+---
+
+# Setup and Execution
+
+## Prerequisites
+
+Make sure you have:
+
+* Node.js 20+
+* npm or yarn
+* Modern web browser
+
+---
+
+## Installation
+
+Clone the repository:
+
 ```bash
-# Clone the repository and install dependencies
+git clone https://github.com/Prathiksha-K1/technews.git
+```
+
+Navigate into the project:
+
+```bash
+cd technews
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
 
-# Set up environment variables
+---
+
+# Environment Variables
+
+Create a `.env` file:
+
+```bash
 cp .env.example .env
-# Add your GEMINI_API_KEY in .env (optional; local fallback operates without key)
+```
 
-# Run full-stack development server (Express + Vite on port 3000)
+Add your Gemini API key:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+The Gemini API key is optional if the application is configured to use its local fallback dataset.
+
+---
+
+# Run Development Server
+
+Start the full-stack development environment:
+
+```bash
 npm run dev
+```
 
-# Run TypeScript compilation check
+The application runs through the Express and Vite development setup.
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# TypeScript and Code Check
+
+Run the project validation command:
+
+```bash
 npm run lint
+```
 
-# Build for production
+---
+
+# Production Build
+
+Create a production build:
+
+```bash
 npm run build
+```
 
-# Start production server
+---
+
+# Start Production Server
+
+```bash
 npm start
 ```
 
 ---
 
-## 8. Academic Evaluation Points
+# Live Demo
 
-When explaining this application during an evaluation:
-1. **Component Modularity**: Check `src/components/cards/ArticleCard.tsx` and notice how it accepts variant flags (`standard`, `horizontal`) and handles image fallbacks cleanly.
-2. **State Management**: Notice the custom hook `useArticles.ts` calculating active trends directly from dataset frequency arrays without modifying state.
-3. **Form Handling**: Open "Submit Story", attempt submitting empty fields, and observe real-time error states, URL structure validation, and instant state insertion.
-4. **Offline Capability**: Bookmark articles in Command Center, navigate to Saved Articles, export reading lists, or refresh the browser—all state persists reliably.
-#   t e c h s p a c e  
- #   t e c h n e w s  
- 
+https://technews-lilac.vercel.app/
+
+---
+
+# GitHub Repository
+
+https://github.com/Prathiksha-K1/technews
+
+---
+
+# Application Screenshots
+
+Add application screenshots inside a `docs` folder:
+
+```text
+docs/
+├── home.png
+├── live-feed.png
+├── explore.png
+├── article-details.png
+├── intelligence.png
+├── trending.png
+└── saved-articles.png
+```
+
+Example:
+
+```markdown
+![TECHPULSE Home](docs/home.png)
+
+![Live Feed](docs/live-feed.png)
+
+![AI Intelligence Dashboard](docs/intelligence.png)
+```
+
+---
+
+# Project Objectives
+
+TECHPULSE was designed to demonstrate how a modern technology information platform can combine:
+
+* React-based modular architecture
+* TypeScript
+* AI-assisted intelligence
+* Trend analysis
+* Search and discovery
+* Persistent browser storage
+* Responsive UI/UX
+* Full-stack API architecture
+
+The objective is to transform a traditional technology news interface into an interactive technology intelligence portal.
+
+---
+
+# Future Enhancements
+
+Potential future improvements include:
+
+* Real-time external news APIs
+* Advanced article summarization
+* Personalized AI news recommendations
+* Historical trend analytics
+* Real-time breaking-news alerts
+* AI-powered article Q&A
+* Semantic search using embeddings
+* Multi-source news aggregation
+* Regional technology intelligence
+* Advanced analytics dashboards
+* User authentication
+* Cloud database integration
+
+---
+
+# Author
+
+**Prathiksha K**
+
+B.Tech Computer Science and Engineering
+
+**Project:** TECHPULSE - Live Technology News & Intelligence Portal
+
+---
+
+# License
+
+This project is developed for academic, educational, and demonstration purposes.
